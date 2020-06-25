@@ -19,8 +19,10 @@ del %RELEASE_DIR%\%PROJECT%.tar.bz2
 
 :: Archives
 
-tar -cvf %RELEASE_DIR%\%PROJECT%.tar %BUILD_DIR%\*
-%ZIP_DIR%\7z.exe a -t7z %RELEASE_DIR%\%PROJECT%.7z %BUILD_DIR%\*
-%ZIP_DIR%\7z.exe a -tzip %RELEASE_DIR%\%PROJECT%.zip %BUILD_DIR%\*
-%ZIP_DIR%\7z.exe a -tgzip %RELEASE_DIR%\%PROJECT%.tar.gz %RELEASE_DIR%\%PROJECT%.tar
-%ZIP_DIR%\7z.exe a -tbzip2 %RELEASE_DIR%\%PROJECT%.tar.bz2 %RELEASE_DIR%\%PROJECT%.tar
+cd %~dp0\%BUILD_DIR%
+tar -cvf %~dp0\%RELEASE_DIR%\%PROJECT%.tar *
+%ZIP_DIR%\7z.exe a -t7z %~dp0\%RELEASE_DIR%\%PROJECT%.7z *
+%ZIP_DIR%\7z.exe a -tzip %~dp0\%RELEASE_DIR%\%PROJECT%.zip *
+cd %~dp0\%RELEASE_DIR%
+%ZIP_DIR%\7z.exe a -tgzip %PROJECT%.tar.gz  %PROJECT%.tar
+%ZIP_DIR%\7z.exe a -tbzip2 %PROJECT%.tar.bz2  %PROJECT%.tar
